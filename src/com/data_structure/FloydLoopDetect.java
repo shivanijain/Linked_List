@@ -18,7 +18,9 @@ public class FloydLoopDetect extends CustomiseList {
             slowptr = slowptr.next;
             fastptr = fastptr.next.next;
         }
+
         if( true == loopExist ) {
+            lengthOfLoop( slowptr );
             slowptr = this.head;
             while( slowptr!= fastptr.next ){
                 slowptr = slowptr.next;
@@ -29,6 +31,16 @@ public class FloydLoopDetect extends CustomiseList {
         }
     }
 
+    private void lengthOfLoop( Node head){
+        Node current = head;
+        int count = 0;
+        while( current.next != head ) {
+            current = current.next;
+            count++;
+        }
+        System.out.print("count"+count);
+    }
+
     public static void main(String[] args) {
         FloydLoopDetect ls = new FloydLoopDetect();
         ls.head = ls.insertNode( ls.head, "first data",1);
@@ -36,7 +48,7 @@ public class FloydLoopDetect extends CustomiseList {
         ls.head = ls.insertNode( ls.head, "third data",3 );
         ls.head = ls.insertNode( ls.head, "forth data",4 );
         ls.head = ls.insertNode( ls.head, "fifth data",5 );
-        ls.head.next.next.next.next.next = ls.head.next.next.next;
+        ls.head.next.next.next.next.next = ls.head.next.next;
         ls.traverseList(ls.head);
         ls.loopDetect();
     }
