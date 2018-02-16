@@ -9,6 +9,7 @@ import java.util.HashMap;
  */
 public class CustomiseList extends LinkedList {
     protected Node head;
+    protected int ListCount = 1;
     public static int[] arr = new int[2];
     Node insertNode( Node head, String data, int pos ) {
         Node tempNode = new Node();
@@ -59,6 +60,7 @@ public class CustomiseList extends LinkedList {
                  break;
              } else {
                  hm.put(current,current.data);
+                 this.ListCount++;
                  current = current.next;
                  System.out.println( current.data );
              }
