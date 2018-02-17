@@ -23,6 +23,31 @@ public class ReversedList extends CustomiseList {
         }
         traverseList( this.head );
     }
+
+    void reverseByNode() {
+        Node prev = null;
+        Node current = this.head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        this.head = prev;
+    }
+
+    void ReverseList(Node current, Node previous) {
+        if(current.next != null)
+        {
+            ReverseList(current.next, current);
+            Node temp = current.next;
+            temp.next = current;
+            current.next = previous;
+        }
+    }
+
+
     public static void main(String[] args) {
         ReversedList ls = new ReversedList();
         ls.head = ls.insertNode( ls.head, "1",1);
@@ -32,6 +57,9 @@ public class ReversedList extends CustomiseList {
         ls.head = ls.insertNode( ls.head, "5",5 );
         ls.traverseList(ls.head);
         System.out.println("--------------" + ls.ListCount);
-        ls.reverse();
+        //ls.reverse();
+        System.out.println("=========Reverese visa Node");
+        ls.reverseByNode();
+        ls.traverseList(ls.head);
     }
 }
